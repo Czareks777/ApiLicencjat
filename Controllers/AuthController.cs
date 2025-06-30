@@ -32,7 +32,7 @@ namespace LicencjatUG.Server.Controllers
             }
         }
 
-        // Logowanie uzytkownika
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto loginDto)
         {
@@ -48,13 +48,13 @@ namespace LicencjatUG.Server.Controllers
             return Ok(new { token });
         }
 
-        // Tworzenie tokena JWT
+     
         private string CreateToken(User user)
         {
             var claims = new List<Claim>
     {
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        // Zmieniamy nazwę claimu na ClaimTypes.Name
+        
         new Claim(ClaimTypes.Name, user.Username),
         new Claim("name", user.Name),
         new Claim("surname", user.Surname)
